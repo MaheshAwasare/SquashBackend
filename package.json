@@ -2,7 +2,7 @@
   "name": "squashbackend",
   "version": "1.0.0",
   "description": "Backend for SquashCoach app",
-  "main": "app.js",
+  "main": "Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MaheshAwasare/SquashBackend/issues"
   },
-  "homepage": "https://github.com/MaheshAwasare/SquashBackend#readme"
+  "homepage": "https://github.com/MaheshAwasare/SquashBackend#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
