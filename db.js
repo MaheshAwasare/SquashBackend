@@ -25,10 +25,10 @@ const query = (sql, params, callback) => {
 
       if (err) {
         console.error('Error executing query: ' + err.message);
-        return callback(err, null);
+        return callback(err, null); // Pass error to the callback
       }
 
-      return callback(null, results);
+      callback(null, results); // Pass results to the callback
     });
   });
 };
