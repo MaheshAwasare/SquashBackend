@@ -1,0 +1,19 @@
+{
+  "name": "squashbackend",
+  "version": "1.0.0",
+  "description": "Backend for SquashCoach app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaheshAwasare/SquashBackend.git"
+  },
+  "author": "Mahesh Awasare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaheshAwasare/SquashBackend/issues"
+  },
+  "homepage": "https://github.com/MaheshAwasare/SquashBackend#readme"
+}
