@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const db = require('./db'); 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = 4000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.get('/', (req, res) => {
@@ -41,7 +41,7 @@ app.get('/users', (req, res) => {
     }
   
     try {
-      // Query the database to find the user by username
+    
       const sql = 'SELECT * FROM UserDetails WHERE username = ?';
       db.query(sql, [username], (err, results) => {
         if (err) {
@@ -49,14 +49,14 @@ app.get('/users', (req, res) => {
           return res.status(500).json({ error: 'Internal Server Error' });
         }
   
-        // Check if user exists
+       
         if (!results.length) {
           return res.status(401).json({ error: 'Invalid credentials' });
         }
   
         const user = results[0];
   
-        // Compare the provided password with the hashed password stored in the database
+       
         bcrypt.compare(password, user.password, (error, passwordMatch) => {
           if (error) {
             console.error('Error comparing passwords:', error);
@@ -67,22 +67,21 @@ app.get('/users', (req, res) => {
             return res.status(401).json({ error: 'Invalid credentials' });
           }
   
-          // If the password matches, generate a JWT token
+         
           const token = jwt.sign({ userId: user.id }, "SECRET_KEY", { expiresIn: '1h' });
   
-          // Send the token in the response
+        
           res.json({ token });
         });
       });
     } catch (error) {
-      // This catch block will only catch errors outside of the callbacks
+     
       console.error('Unexpected error:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
   
-
-  //Start the server
+  //Server Start
    app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
   })
