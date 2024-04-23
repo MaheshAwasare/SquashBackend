@@ -3,11 +3,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const db = require('./db'); 
 const app = express();
+const apiRouter = require('./workapi');
 const port = 4000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.get('/', (req, res) => {
-    res.send('Hello from Node.js server!');
+    res.send('Hello from SquashBackend Server!');
   });
 
 
@@ -29,9 +30,10 @@ app.get('/users', (req, res) => {
     next();
   });
   
-
+// Mount the API routes
+app.use('/api', apiRouter);
   // Endpoint for user login
-  app.post('/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     console.log('Request body:', req.body);
     const { username, password } = req.body;
   
